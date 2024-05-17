@@ -1,14 +1,24 @@
 import React from 'react'
-import PokeBook from "./pages/home"
 import "./App.css"
-import Topbar from './components/topbar'
+import ListView from './pages/listView'
+import { RouterProvider,createBrowserRouter } from 'react-router-dom'
+import PokeBook from './pages/home'
+import PokemonDetails from './pages/detailView'
 
 const App = () => {
+
+  const router = createBrowserRouter([
+    { path: "/", element: <PokeBook/> },
+    { path: "/listview", element: <ListView /> },
+    { path: "/detailsview", element: <PokemonDetails /> },
+    
+
+  ]);
+
   return (
-    <div>
-       <PokeBook /> 
-       <Topbar />
-    </div>
+    <>
+    <RouterProvider router={router} />
+    </>
   )
 }
 

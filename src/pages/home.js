@@ -41,7 +41,7 @@ const PokeBook = () => {
             </svg>
           </div>
         </div>
-        <button className="mt-4 underline "onClick={()=>navigate(`//${product.id}`)}>View all</button>
+        <button className="mt-4 underline "onClick={()=>navigate("/listview")}>View all</button>
       </div>
     </div>
   );

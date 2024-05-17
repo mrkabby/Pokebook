@@ -11,9 +11,9 @@ const Topbar = () => {
   };
 
   return (
-    <div className={`bg-zinc-100 p-1 flex items-center justify-space-betwwen ${darkMode ? 'dark' : ''}`}>
+    <div className={`bg-zinc-100  flex items-center justify-space-betwwen ${darkMode ? 'dark' : ''}`}>
       <div className="flex items-center w-1/2 md:w-auto"> {/* Adjust width for mobile */}
-        <img src={Group1} alt="Pokebook Logo" className="h-8 md:h-12" />
+        <img src={Group1} alt="Pokebook Logo" className="h-8 md:h-12 mt-6" />
         <h1 className="text-2xl sm:text-3xl font-bold text-zinc-800 mb-1">
           Poké<span className='text-pink-500'>book</span>
         </h1>

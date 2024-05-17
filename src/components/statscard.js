@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PokemonModal = ({ name, image, types, content, tabs }) => {
+const PokemonModal = ({ pokemon }) => {
   const [activeTab, setActiveTab] = useState(tabs[0].id); // Set the first tab as active by default
 
   const handleTabClick = (tabId) => {
@@ -31,8 +31,8 @@ const PokemonModal = ({ name, image, types, content, tabs }) => {
         </div>
         <div className="flex mb-4">
           <img
-            src={image}
-            alt={name}
+            src={pokemon.sprites.other["official-artwork"].front_default}
+            alt="pokemon img"
             className="w-48 h-48 rounded-full mr-4"
           />
           <div className="flex flex-col space-y-2">
