@@ -10,7 +10,7 @@ const App = () => {
   const router = createBrowserRouter([
     { path: "/", element: <PokeBook/> },
     { path: "/listview", element: <ListView /> },
-    { path: "/detailsview", element: <PokemonDetails /> },
+    { path: "/detailsview/:id", element: <PokemonDetails /> },
     
 
   ]);

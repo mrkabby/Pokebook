@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 // Shared Tailwind CSS class strings
 const roundedFull = "rounded-full";
@@ -31,10 +31,12 @@ const PokemonCard = ({ pokemon }) => {
           <TypeBadge type="Poison" bgColor="bg-purple-200" style={{ marginRight: 0 }} />
         </p>
       </div>
-      <div className="px-0 pt-6 pb-6">
-        <button className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-1 px-4 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out absolute bottom-0 mb-4 w-full" onClick={()=>navigate("/detailsview")}>
+      <div className="px-0 pt-6 pb-6 flex">
+        <button className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-1 px-4 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out absolute bottom-0 mb-4 w-full" onClick={()=>navigate(`/detailsview/${pokemon.id}`)}>
           View Pokemon
+          
         </button>
+        
       </div>
     </div>
   );

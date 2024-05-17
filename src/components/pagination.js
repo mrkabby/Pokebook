@@ -53,7 +53,7 @@ const Pagination = ({
           onClick={() => handleClick(pageNumber)}
           className={`mx-1 px-3 py-1 border rounded-lg ${
             currentPage === pageNumber
-              ? "bg-primary text-[#f6ecea]"
+              ? "bg-pink-500 text-[#f6ecea]"
               : "bg-[#f6ecea] text-black"
           }`}
         >
