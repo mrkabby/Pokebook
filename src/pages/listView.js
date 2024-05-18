@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Topbar from '../components/topbar';
-import PokemonCard from '../components/listviewcard';
-import useQueryPokemon from '../components/usequearypokemon';
+import ListViewCard from '../components/cards/listviewcard';
 import SelectPage from '../components/selectpage';
 import Pagination from '../components/pagination';
 import TubeSpinner from "../assets/tube-spinner.svg";
+import useQueryAllPokemon from '../components/usehooks/usequearypokemon';
 
 const ListView = () => {
-  const { allPokemons, loading } = useQueryPokemon();
+  const { allPokemons, loading } = useQueryAllPokemon();
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -73,7 +73,7 @@ const ListView = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {getPageData().map((pokemon) => (
-              <PokemonCard
+              <ListViewCard
                 key={pokemon.id}
                 pokemon={{ ...pokemon, showDetails: pokemon.id === selectedPokemon }}
                 onViewDetails={handleViewDetails}
