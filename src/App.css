@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --theme-color: #F472B6; /* Default theme color */
+  }
+  
+  /* Use the CSS variable in your styles */
+  .some-class {
+    color: var(--theme-color);
+  }
+  
+  .another-class {
+    background-color: var(--theme-color);
+  }
+  

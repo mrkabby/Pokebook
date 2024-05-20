@@ -27,7 +27,7 @@ const Similar = () => {
       {loading ? (
         <p>Loading similar Pokémon...</p>
       ) : (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 ">
           {similarPokemon.map((pokemon, index) => (
             <div key={index} className="text-center">
               <img

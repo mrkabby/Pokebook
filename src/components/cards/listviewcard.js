@@ -1,5 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from "../themecontext";
 
 // Shared Tailwind CSS class strings
 const roundedFull = "rounded-full";
@@ -14,7 +15,9 @@ const TypeBadge = ({ type }) => {
   const textColor = `text-${type}-800`;
 
   return (
-    <span className={`${bgColor} ${roundedFull} ${px3Py1} ${textSmFontSemibold} ${textColor} mr-2 capitalize`}>
+    <span
+      className={`${bgColor} ${roundedFull} ${px3Py1} ${textSmFontSemibold} ${textColor} mr-2 capitalize`}
+    >
       {type}
     </span>
   );
@@ -23,15 +26,19 @@ const TypeBadge = ({ type }) => {
 // Main component for the Pokemon card
 const ListViewCard = ({ pokemon }) => {
   const navigate = useNavigate();
+  const themeColor = useTheme();
+  console.log(themeColor)
   return (
     <div className="max-w-sm w-full mx-auto rounded overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out relative">
       <img
         className="w-full bg-slate-200"
-        src={pokemon.sprites.other['official-artwork'].front_default}
+        src={pokemon.sprites.other["official-artwork"].front_default}
         alt="pokemon img"
       />
       <div className="px-4 py-4">
-        <div className="font-bold text-xl mb-2 text-center md:text-left capitalize">{pokemon.name}</div>
+        <div className="font-bold text-xl mb-2 text-center md:text-left capitalize">
+          {pokemon.name}
+        </div>
         <div className={`${textZinc700} text-base text-center md:text-left`}>
           {pokemon.types.map((typeInfo) => (
             <TypeBadge key={typeInfo.type.name} type={typeInfo.type.name} />
@@ -40,7 +47,11 @@ const ListViewCard = ({ pokemon }) => {
       </div>
       <div className="px-0 pt-6 pb-6 flex">
         <button
-          className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-1 px-4 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out absolute bottom-0 mb-4 w-full"
+          className=" text-black font-bold py-1 px-4 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out absolute bottom-0 mb-4 w-full"
+          style={{
+            backgroundColor: themeColor,
+            hover: { backgroundColor: themeColor },
+          }}
           onClick={() => navigate(`/detailsview/${pokemon.id}`)}
         >
           View Pokemon

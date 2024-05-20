@@ -10,7 +10,7 @@ const SelectPage = ({ itemsPerPage, handlePageSizeChange }) => {
         id="itemsPerPage"
         value={itemsPerPage}
         onChange={handlePageSizeChange}
-        className="border rounded px-2 py-1 bg-[#d6d0d0] text-sm"
+        className="border rounded px-2 py-1 bg-[#d6d0d0] text-sm" 
       >
         <option value={8}>8</option>
         <option value={12}>12</option>

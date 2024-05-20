@@ -5,12 +5,14 @@ import SelectPage from '../components/selectpage';
 import Pagination from '../components/pagination';
 import TubeSpinner from "../assets/tube-spinner.svg";
 import useQueryAllPokemon from '../components/usehooks/usequearypokemon';
+import { useTheme } from '../components/themecontext';
 
 const ListView = () => {
   const { allPokemons, loading } = useQueryAllPokemon();
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const { themeColor } = useTheme();
 
   const totalPages = Math.ceil(allPokemons.length / itemsPerPage);
 
@@ -93,6 +95,7 @@ const ListView = () => {
             handleClick={handleClick}
             pageNumbers={pageNumbers}
             handleNextPage={handleNextPage}
+            themecolor={themeColor}
           />
         </div>
         <div className="flex mt-4 md:mt-0">

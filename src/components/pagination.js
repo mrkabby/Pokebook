@@ -1,4 +1,5 @@
 import React from "react";
+import { useTheme } from "./themecontext";
 
 const Pagination = ({
   handlePrevPage,
@@ -10,12 +11,14 @@ const Pagination = ({
   pageNumbers,
   handleNextPage,
 }) => {
+  const themeColor = useTheme();
+
   return (
     <div className="flex flex-wrap justify-center items-center space-x-1">
       <button
         onClick={handlePrevPage}
         disabled={currentPage === 1}
-        className="mx-1 px-2 py-1 border rounded-lg bg-[#f6ecea] text-black disabled:opacity-50"
+        className="mx-1 px-2 py-1 border rounded-lg bg-[#f6ecea] text-black "
       >
         <svg
           className="w-4 h-4"
@@ -36,11 +39,12 @@ const Pagination = ({
         <>
           <button
             onClick={() => handleClick(1)}
-            className={`mx-1 px-3 py-1 border rounded-lg ${
+            className="mx-1 px-3 py-1 border rounded-lg"
+            style={
               currentPage === 1
-                ? "bg-primary text-[#f6ecea]"
-                : "bg-[#f6ecea] text-black"
-            }`}
+                ? { backgroundColor: themeColor, color: "#f6ecea" }
+                : { backgroundColor: "#f6ecea", color: "black" }
+            }
           >
             1
           </button>
@@ -51,11 +55,12 @@ const Pagination = ({
         <button
           key={pageNumber}
           onClick={() => handleClick(pageNumber)}
-          className={`mx-1 px-3 py-1 border rounded-lg ${
+          className="mx-1 px-3 py-1 border rounded-lg"
+          style={
             currentPage === pageNumber
-              ? "bg-pink-500 text-[#f6ecea]"
-              : "bg-[#f6ecea] text-black"
-          }`}
+              ? { backgroundColor: themeColor, color: "#f6ecea" }
+              : { backgroundColor: "#f6ecea", color: "black" }
+          }
         >
           {pageNumber}
         </button>
@@ -65,11 +70,12 @@ const Pagination = ({
           {endPage < totalPages - 1 && <span className="mx-1">...</span>}
           <button
             onClick={() => handleClick(totalPages)}
-            className={`mx-1 px-3 py-1 border rounded-lg ${
+            className="mx-1 px-3 py-1 border rounded-lg"
+            style={
               currentPage === totalPages
-                ? "bg-primary text-[#f6ecea]"
-                : "bg-[#f6ecea] text-black"
-            }`}
+                ? { backgroundColor: themeColor, color: "#f6ecea" }
+                : { backgroundColor: "#f6ecea", color: "black" }
+            }
           >
             {totalPages}
           </button>
