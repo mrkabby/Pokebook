@@ -1,6 +1,6 @@
 const About = ({ pokemon }) => (
     <div>
-      <h3 className="text-lg font-semibold border-b pb-2">About</h3>
+      <h3 className="text-lg font-semibold border-b pb-2 text-center">About</h3>
       <div className="mt-2">
         <div className="flex justify-between">
           <span>Height</span>

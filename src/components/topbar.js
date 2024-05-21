@@ -53,7 +53,7 @@ const Topbar = () => {
       </form>
       <button
         onClick={() => setShowThemeModal(true)}
-        className={`w-10 h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-${themeColor} focus:ring-offset-2`}
+        className= "w-10 h-10 rounded-full focus:outline-none ring-1 ring-black ring-offset-2"
         style={{ backgroundColor: themeColor }}
       >
         <span style={{ color: themeColor }} className="sr-only">Choose Theme</span>

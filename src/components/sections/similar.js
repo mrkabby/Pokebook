@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+ 
+import SimilarCard from '../cards/similarcard.';
 
 const Similar = () => {
   const [similarPokemon, setSimilarPokemon] = useState([]);
@@ -10,7 +12,12 @@ const Similar = () => {
       try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=5');
         const data = await response.json();
-        setSimilarPokemon(data.results);
+        const promises = data.results.map(async (pokemon) => {
+          const res = await fetch(pokemon.url);
+          return await res.json();
+        });
+        const detailedPokemon = await Promise.all(promises);
+        setSimilarPokemon(detailedPokemon);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching similar Pokémon:', error);
@@ -23,20 +30,14 @@ const Similar = () => {
 
   return (
     <div>
-      <h3 className="text-lg font-semibold border-b pb-2">Similar Pokémon</h3>
+      <h3 className="text-lg font-semibold border-b pb-2 text-center">Similar</h3>
       {loading ? (
         <p>Loading similar Pokémon...</p>
       ) : (
-        <div className="grid grid-cols-3 ">
-          {similarPokemon.map((pokemon, index) => (
-            <div key={index} className="text-center">
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
-                alt={pokemon.name}
-                className="mx-auto"
-              />
-              <p className="mt-2">{pokemon.name}</p>
-            </div>
+        <div className={`grid grid-template-columns repeat(auto-fit, minmax(250px, 1fr)) gap-8 py-7 md:grid-template-columns repeat(auto-fit, minmax(250px, 1fr)) lg:grid-template-columns repeat(auto-fit, minmax(250px, 1fr))`}
+        >
+          {similarPokemon.map((pokemon) => (
+            <SimilarCard key={pokemon.id} pokemon={pokemon} className ="w-1/12" />
           ))}
         </div>
       )}

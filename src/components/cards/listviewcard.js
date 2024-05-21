@@ -1,6 +1,6 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { useTheme } from "../themecontext";
+import PokemonModal from "../pokemonModal"; 
 
 // Shared Tailwind CSS class strings
 const roundedFull = "rounded-full";
@@ -16,7 +16,7 @@ const TypeBadge = ({ type }) => {
 
   return (
     <span
-      className={`${bgColor} ${roundedFull} ${px3Py1} ${textSmFontSemibold} ${textColor} mr-2 capitalize`}
+      className={`${bgColor} ${roundedFull} ${px3Py1} ${textSmFontSemibold} ${textColor} bg-[#E1E1E1] mx-2 capitalize`}
     >
       {type}
     </span>
@@ -25,39 +25,78 @@ const TypeBadge = ({ type }) => {
 
 // Main component for the Pokemon card
 const ListViewCard = ({ pokemon }) => {
-  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const themeColor = useTheme();
-  console.log(themeColor)
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="max-w-sm w-full mx-auto rounded overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out relative">
-      <img
-        className="w-full bg-slate-200"
-        src={pokemon.sprites.other["official-artwork"].front_default}
-        alt="pokemon img"
-      />
-      <div className="px-4 py-4">
-        <div className="font-bold text-xl mb-2 text-center md:text-left capitalize">
-          {pokemon.name}
-        </div>
-        <div className={`${textZinc700} text-base text-center md:text-left`}>
-          {pokemon.types.map((typeInfo) => (
-            <TypeBadge key={typeInfo.type.name} type={typeInfo.type.name} />
-          ))}
+    <>
+      <div className="w-full md:w-64 p-2 h-[230px] rounded-2xl flex flex-col justify-center my-5 items-center bg-white group relative hover:cursor-pointer hover:shadow-lg transition-shadow duration-300 ease-in-out">
+        <div className="h-full w-full mt-5 flex flex-col items-center">
+          <div className="w-full bg-slate-200 h-24 flex items-center justify-center rounded-lg relative">
+            <img
+              className="w-44 h-44 object-contain absolute -bottom-1 left-1/2 transform -translate-x-1/2"
+              src={pokemon.sprites.other["official-artwork"].front_default}
+              alt="pokemon img"
+            />
+          </div>
+          <h1 className="font-bold text-xl mt-2 text-center capitalize">
+            {pokemon.name}
+          </h1>
+          <div className="flex items-center px-4 py-1">
+            <h2 className={`${textZinc700} text-base pt-3 text-center`}>
+              {pokemon.types.map((typeInfo) => (
+                <TypeBadge key={typeInfo.type.name} type={typeInfo.type.name} />
+              ))}
+            </h2>
+          </div>
+          <div className="opacity-0 group-hover:opacity-100 mt-4">
+            <button
+              className="text-white rounded-xl px-7 mb-2 flex justify-between w-full"
+              style={{ backgroundColor: themeColor.themeColor }}
+              onClick={handleOpenModal}
+            >
+              <span>View Pokémon</span>
+              <span className="flex justify-end">
+                <svg
+                  className="h-6 w-6 inline-block ml-2"
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
-      <div className="px-0 pt-6 pb-6 flex">
-        <button
-          className=" text-black font-bold py-1 px-4 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out absolute bottom-0 mb-4 w-full"
-          style={{
-            backgroundColor: themeColor,
-            hover: { backgroundColor: themeColor },
-          }}
-          onClick={() => navigate(`/detailsview/${pokemon.id}`)}
-        >
-          View Pokemon
-        </button>
-      </div>
-    </div>
+      {isModalOpen && (
+        <PokemonModal pokemon={pokemon} onClose={handleCloseModal} />
+      )}
+    </>
   );
 };
 

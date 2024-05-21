@@ -42,7 +42,7 @@ const Pagination = ({
             className="mx-1 px-3 py-1 border rounded-lg"
             style={
               currentPage === 1
-                ? { backgroundColor: themeColor, color: "#f6ecea" }
+                ? { backgroundColor: themeColor.themeColor, color: "#f6ecea" }
                 : { backgroundColor: "#f6ecea", color: "black" }
             }
           >
@@ -58,7 +58,7 @@ const Pagination = ({
           className="mx-1 px-3 py-1 border rounded-lg"
           style={
             currentPage === pageNumber
-              ? { backgroundColor: themeColor, color: "#f6ecea" }
+              ? { backgroundColor: themeColor.themeColor, color: "#f6ecea" }
               : { backgroundColor: "#f6ecea", color: "black" }
           }
         >
@@ -73,7 +73,7 @@ const Pagination = ({
             className="mx-1 px-3 py-1 border rounded-lg"
             style={
               currentPage === totalPages
-                ? { backgroundColor: themeColor, color: "#f6ecea" }
+                ? { backgroundColor: themeColor.themeColor, color: "#f6ecea" }
                 : { backgroundColor: "#f6ecea", color: "black" }
             }
           >
