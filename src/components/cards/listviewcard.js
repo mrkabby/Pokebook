@@ -26,7 +26,7 @@ const TypeBadge = ({ type }) => {
 // Main component for the Pokemon card
 const ListViewCard = ({ pokemon }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const themeColor = useTheme();
+  const {themeColor} = useTheme();
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -59,8 +59,8 @@ const ListViewCard = ({ pokemon }) => {
           </div>
           <div className="opacity-0 group-hover:opacity-100 mt-4">
             <button
-              className="text-white rounded-xl px-7 mb-2 flex justify-between w-full"
-              style={{ backgroundColor: themeColor.themeColor }}
+              className="text-white rounded-xl px-10 mb-2 flex justify-between w-full"
+              style={{ backgroundColor: themeColor }}
               onClick={handleOpenModal}
             >
               <span>View Pokémon</span>

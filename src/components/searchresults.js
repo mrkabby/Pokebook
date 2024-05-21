@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ListViewCard from '../components/cards/listviewcard';
 import TubeSpinner from "../assets/tube-spinner.svg";
 import { useTheme } from './themecontext';
+import Topbar from './topbar';
 
 const SearchResults = () => {
   const { searchTerm } = useParams();
@@ -35,6 +36,9 @@ const SearchResults = () => {
   }, [searchTerm]);
 
   return (
+    <>
+    <Topbar />
+    
     <div className="p-4">
       <button 
         className=" text-white px-4 py-2 rounded-md"
@@ -55,6 +59,7 @@ const SearchResults = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

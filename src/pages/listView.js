@@ -67,13 +67,14 @@ const ListView = () => {
   }
 
   return (
-    <div>
+    <>
+     <div>
       <Topbar />
-      <div className="flex justify-center m-5 md:p-10">
+      <div className="flex justify-center p-9 m-7 md:p-10 ">
         {loading ? (
           <img src={TubeSpinner} alt="Loading" className="w-24 h-24"/>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7 md:gap-8 ">
             {getPageData().map((pokemon) => (
               <ListViewCard
                 key={pokemon.id}
@@ -106,6 +107,8 @@ const ListView = () => {
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 

@@ -1,40 +1,37 @@
 import React from 'react';
 import { useTheme } from '../themecontext';
 
-const StatBar = ({ label, value }) => {
+const Stats = ({ pokemon }) => {
   const { themeColor } = useTheme();
-  // Set a maximum width for the bar
-  const maxWidth = 255;
-  // Calculate the width of the bar based on the value
-  const width = `${(value / 255) * maxWidth}px`; // Assuming the maximum stat value is 255
 
   return (
-    <div className="flex items-center mb-2">
-      <div className="w-12 ">{label}</div>
-      <div className="bg-gray-200 h-4 flex-grow relative flex items-center">
-        <div className="h-full" style={{ 
-          width,
-          backgroundColor: themeColor,
-        }}></div>
-        <span className="absolute right-1 mr-2">{value}</span>
+    <>
+      <div className="w-[95%]">
+        <div className="flex justify-center pb-4 pt-2">
+          <h1 className="font-bold text-xl">Stats</h1>
+        </div>
+        <div className="flex w-full px-3 py-4 bg-gradient-to-r from-[#FFFFFF] via-[#e4e1e1] to-[#FFFFFF]">
+          <div className="space-y-5 w-[80%] justify-center ml-5 flex flex-col">
+            {pokemon.stats.map((pokestats) => (
+              <div className="flex h-4">
+                <p className="w-44 lg:w-">{pokestats.stat.name}</p>
+                <div className="w-full mt-2 bg-zinc-400 h-2.5 ml-1 mr-2">
+                  <div
+                    className="h-2.5 "
+                    style={{
+                      width: `${pokestats.base_stat}%`,
+                      backgroundColor: themeColor,
+                    }}
+                  ></div>
+                </div>
+                <p className="w-5 ml-5">{pokestats.base_stat}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
-
-const Stats = ({ pokemon }) => (
-  <div>
-    <h3 className="text-lg font-semibold border-b pb-2 text-center">Stats</h3>
-    <div className="mt-2">
-      {pokemon.stats.map((statInfo) => (
-        <StatBar
-          key={statInfo.stat.name}
-          label={statInfo.stat.name}
-          value={statInfo.base_stat}
-        />
-      ))}
-    </div>
-  </div>
-);
 
 export default Stats;

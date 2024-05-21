@@ -29,9 +29,9 @@ const PokemonModal = ({ pokemon, onClose }) => {
   
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-end bg-black bg-opacity-50">
-      <div className="bg-white w-full md:w-1/3 lg:w-1/4 rounded-lg overflow-auto relative">
-        <div className="relative p-4 rounded-lg text-center" style={{
+    <div className="fixed inset-0 z-50 flex items-center justify-end bg-black bg-opacity-50  ">
+      <div className="bg-white w-full md:w-1/2 lg:w-2/5 rounded-lg overflow-auto relative h-full px-3 py-2">
+        <div className="relative flex justify-center rounded-lg text-center h-44 " style={{
               backgroundColor: bgColor ? `rgb(${bgColor})` : "transparent",
             }}>
           <button
@@ -43,7 +43,7 @@ const PokemonModal = ({ pokemon, onClose }) => {
           <img
             src={pokemon.sprites?.other["official-artwork"].front_default}
             alt={`${pokemon.name} img`}
-            className="mx-auto"
+            className="flex  absolute w-44 h-44 mt-7"
           />
         </div>
         <h2 className="text-xl font-bold text-center mt-4 capitalize">{pokemon.name}</h2>
@@ -51,12 +51,12 @@ const PokemonModal = ({ pokemon, onClose }) => {
           {activeSection === "about" && <About pokemon={pokemon} />}
           {activeSection === "stats" && <Stats pokemon={pokemon} />}
           {activeSection === "similar" && (
-            <div style={{ maxHeight: 200, overflowY: "auto" }}>  {/* Limit height and enable scroll if needed */}
+            <div style={{ maxHeight: 500, overflowY: "auto" }}>  
               <Similar />
             </div>
           )}
         </div>
-        <div className="flex justify-around mt-4 border-t pt-4 rounded bg-zinc-200">
+        <div className="flex justify-around  border-t pt-3 pb-3 bg-zinc-200 rounded-full mx-1  ">
           <button
             className={`px-6 py-2 rounded-full ${activeSection === "about" ? "text-black font-semibold bg-white" : ""}`}
             onClick={() => setActiveSection("about")}

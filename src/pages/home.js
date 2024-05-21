@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Group1 from "../../src/assets/Group 1.png";
+import Group1 from "../../src/assets/Group 1.svg";
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../components/themecontext';
 
@@ -35,8 +35,8 @@ const PokeBook = () => {
             placeholder="Enter Pokémon name" 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className={`pl-5 pr-10 py-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-${themeColor} focus:border-transparent`}
-            style={{ borderColor: themeColor }} // Set border color dynamically
+            className={`pl-5 pr-10 py-2 w-full rounded-full focus:outline-none  border-2 focus:border-transparent`}
+            style={{ borderColor: themeColor }} 
           />
           <button type="submit" className="absolute inset-y-0 right-0 pr-3 flex items-center">
             <svg 

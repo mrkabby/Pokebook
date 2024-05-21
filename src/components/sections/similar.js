@@ -30,11 +30,11 @@ const Similar = () => {
 
   return (
     <div>
-      <h3 className="text-lg font-semibold border-b pb-2 text-center">Similar</h3>
+      <h3 className="text-lg font-semibold border-b pb-2 pt-2 text-center">Similar</h3>
       {loading ? (
         <p>Loading similar Pokémon...</p>
       ) : (
-        <div className={`grid grid-template-columns repeat(auto-fit, minmax(250px, 1fr)) gap-8 py-7 md:grid-template-columns repeat(auto-fit, minmax(250px, 1fr)) lg:grid-template-columns repeat(auto-fit, minmax(250px, 1fr))`}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-7 md:gap-8 bg-slate-100 pt-4 "
         >
           {similarPokemon.map((pokemon) => (
             <SimilarCard key={pokemon.id} pokemon={pokemon} className ="w-1/12" />
