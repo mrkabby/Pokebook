@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ListViewCard from '../components/cards/listviewcard';
 import TubeSpinner from "../assets/tube-spinner.svg";
+import { useTheme } from './themecontext';
 
 const SearchResults = () => {
   const { searchTerm } = useParams();
   const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const themeColor = useTheme();
 
   useEffect(() => {
     const fetchSearchResults = async () => {
@@ -35,7 +37,8 @@ const SearchResults = () => {
   return (
     <div className="p-4">
       <button 
-        className="mb-4 bg-pink-500 text-white px-4 py-2 rounded-md"
+        className=" text-white px-4 py-2 rounded-md"
+        style={{ backgroundColor: themeColor.themeColor }}
         onClick={() => navigate(-1)} // Navigate back to the previous page
       >
         &larr; Go Back
