@@ -21,14 +21,14 @@ const Topbar = () => {
     <div className="bg-zinc-100 flex items-center justify-between" style={{ borderBottom: `2px solid ${themeColor}` }}>
       <div className="flex items-center w-1/2 md:w-auto object-contain lg:px-10">
         <Link to = "/" >
-        <img src={Group1} alt="Pokebook Logo" className="h-10 md:h-14 relative " />
+          <img src={Group1} alt="Pokebook Logo" className="h-10 md:h-14 relative " />
         </Link>
-        <h1 className="text-xl sm:text-xl font-bold text-zinc-800 mb-3">
+        <h1 className="text-xl sm:text-xl font-bold text-zinc-800 mb-3 ml-2">
           Poké<span style={{ color: themeColor }}>book</span>
         </h1>
       </div>
       <form className="flex-grow flex mx-2 md:mx-72 relative" onSubmit={handleSearch}>
-       <input
+        <input
           type="text"
           placeholder="Enter Pokémon name"
           value={searchTerm}
@@ -55,7 +55,7 @@ const Topbar = () => {
       </form>
       <button
         onClick={() => setShowThemeModal(true)}
-        className= "w-6 h-5 rounded-full focus:outline-none ring-1 ring-black ring-offset-2 lg:w-10 lg:h-10"
+  className="w-6 h-5 rounded-full focus:outline-none ring-1 ring-black ring-offset-2 lg:w-10 lg:h-10 pl-4 mr-6"
         style={{ backgroundColor: themeColor }}
       >
         <span style={{ color: themeColor }} className="sr-only">Choose Theme</span>

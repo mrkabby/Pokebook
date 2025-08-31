@@ -1,9 +1,10 @@
+
 import React, { useState } from 'react';
 import Group1 from "../../src/assets/Group 1.svg";
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../components/themecontext';
 
-const PokeBook = () => {
+const Home = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const { themeColor } = useTheme();
@@ -11,41 +12,41 @@ const PokeBook = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      navigate(`/search/${searchTerm}`);
+      navigate(`/search/${searchTerm.trim().toLowerCase()}`);
     }
   };
 
   return (
-    <div className="bg-zinc-100 flex items-center justify-center min-h-screen p-4">
-      <div className="text-center w-full max-w-sm">
+    <div className="min-h-screen w-screen bg-zinc-100 flex items-center justify-center">
+      <div className="text-center w-full max-w-sm flex flex-col items-center justify-center">
         <img 
           src={Group1} 
           alt="Pokémon Group" 
           className="mx-auto mb-4 w-full max-w-xs"
         />
-        <h1 className="text-2xl sm:text-3xl font-bold text-zinc-800 mb-1">
+        <h2 className="text-3xl font-bold mb-2 text-zinc-800">
           Poké<span style={{ color: themeColor }}>book</span>
-        </h1>
-        <p className="text-zinc-600 mb-6 text-sm sm:text-base">
-          Largest Pokémon index with information about every Pokémon you can think of.
+        </h2>
+        <p className="text-zinc-600 mb-6 text-center max-w-md">
+          Largest Pokémon index with information<br />about every Pokémon you can think of.
         </p>
-        <form className="relative rounded-full shadow-sm w-full" onSubmit={handleSearch}>
+        <form className="relative rounded-full shadow-sm w-full mb-4" onSubmit={handleSearch}>
           <input 
             type="text" 
-            placeholder="Enter Pokémon name" 
+            placeholder="Enter pokemon name" 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className={`pl-5 pr-10 py-2 w-full rounded-full focus:outline-none  border-2 focus:border-transparent`}
-            style={{ borderColor: themeColor }} 
+            className="pl-5 pr-12 py-3 w-full rounded-full border-4 focus:outline-none text-lg text-zinc-800"
+            style={{ borderColor: themeColor }}
           />
-          <button type="submit" className="absolute inset-y-0 right-0 pr-3 flex items-center">
+          <button type="submit" className="absolute inset-y-0 right-0 pr-4 flex items-center">
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
               fill="none" 
               viewBox="0 0 24 24" 
               strokeWidth="2" 
-              stroke={themeColor} // Set stroke color dynamically
-              className="w-6 h-6 text-pink-500"
+              stroke={themeColor}
+              className="w-7 h-7"
             >
               <path 
                 strokeLinecap="round" 
@@ -55,10 +56,10 @@ const PokeBook = () => {
             </svg>
           </button>
         </form>
-        <button className="mt-4 underline" onClick={() => navigate("/listview")}>View all</button>
+        <button className="underline text-sm text-zinc-800 hover:text-pink-500" style={{ marginTop: "8px" }} onClick={() => navigate("/listview")}>View all</button>
       </div>
     </div>
   );
 };
 
-export default PokeBook;
+export default Home;

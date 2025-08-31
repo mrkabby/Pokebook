@@ -18,15 +18,15 @@ const Theme = ({ show, onClose }) => {
         <div className='flex justify-center items-center pt-10'>
         <div className="flex space-x-7">
           <button
-            onClick={() => changeTheme('#F472B6')}
+            onClick={() => { changeTheme('#F472B6'); onClose(); }}
             className="w-20 h-20 rounded-full bg-pink-400 focus:outline-none focus:ring-1 focus:ring-black focus:ring-offset-2"
           ></button>
           <button
-            onClick={() => changeTheme('#60A5FA')}
+            onClick={() => { changeTheme('#60A5FA'); onClose(); }}
             className="w-20 h-20 rounded-full bg-blue-400 focus:outline-none focus:ring-1 focus:ring-black focus:ring-offset-2"
           ></button>
           <button
-            onClick={() => changeTheme('#FBBF24')}
+            onClick={() => { changeTheme('#FBBF24'); onClose(); }}
             className="w-20 h-20 rounded-full bg-yellow-400 focus:outline-none focus:ring-1 focus:ring-black focus:ring-offset-2"
           ></button>
         </div>

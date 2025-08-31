@@ -51,7 +51,7 @@ const PokemonModal = ({ pokemon, onClose }) => {
           {activeSection === "about" && <About pokemon={pokemon} />}
           {activeSection === "stats" && <Stats pokemon={pokemon} />}
           {activeSection === "similar" && (
-            <div style={{ maxHeight: 500, overflowY: "auto" }}>  
+            <div>
               <Similar />
             </div>
           )}

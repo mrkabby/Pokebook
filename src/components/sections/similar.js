@@ -29,16 +29,20 @@ const Similar = () => {
   }, []);
 
   return (
-    <div>
-      <h3 className="text-lg font-semibold border-b pb-2 pt-2 text-center">Similar</h3>
+    <div className="w-full flex flex-col items-center">
+      <h3 className="text-lg font-bold mb-4 text-center">Similar</h3>
       {loading ? (
         <p>Loading similar Pokémon...</p>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-7 md:gap-8 bg-slate-100 pt-4 "
-        >
-          {similarPokemon.map((pokemon) => (
-            <SimilarCard key={pokemon.id} pokemon={pokemon} className ="w-1/12" />
-          ))}
+  <div className="grid grid-cols-2 gap-6 w-full max-w-xs mx-auto">
+          {[...new Set(similarPokemon.map(p => p.name))].map((name) => {
+            const pokemon = similarPokemon.find(p => p.name === name);
+            return (
+              <div key={pokemon.id} className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
+                  <SimilarCard pokemon={pokemon} />
+                </div>
+            );
+          })}
         </div>
       )}
     </div>

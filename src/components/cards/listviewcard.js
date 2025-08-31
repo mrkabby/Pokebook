@@ -38,9 +38,9 @@ const ListViewCard = ({ pokemon }) => {
 
   return (
     <>
-      <div className="w-full md:w-64 p-2 h-[230px] rounded-2xl flex flex-col justify-center my-5 items-center bg-white group relative hover:cursor-pointer hover:shadow-lg transition-shadow duration-300 ease-in-out">
+      <div className="w-full h-full md:w-64 md:h-64 p-2 rounded-2xl flex flex-col justify-center my-5 items-center bg-white group relative hover:cursor-pointer hover:shadow-lg transition-shadow duration-300 ease-in-out">
         <div className="h-full w-full mt-5 flex flex-col items-center">
-          <div className="w-full bg-slate-200 h-24 flex items-center justify-center rounded-lg relative">
+          <div className="w-full h-32 flex items-center justify-center rounded-lg relative" style={{ background: '#F1F1F1' }}>
             <img
               className="w-44 h-44 object-contain absolute -bottom-1 left-1/2 transform -translate-x-1/2"
               src={pokemon.sprites.other["official-artwork"].front_default}
